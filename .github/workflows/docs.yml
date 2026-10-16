@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch [main]
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
         with:
           ref: main
 
