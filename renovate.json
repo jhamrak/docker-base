@@ -4,6 +4,7 @@
     "config:recommended"
   ],
   "timezone": "Europe/Budapest",
+  "prHourlyLimit": 0,
   "enabledManagers": [
     "custom.regex"
   ],
@@ -15,7 +16,7 @@
         "/(^|/)\\.env$/"
       ],
       "matchStrings": [
-        "^(?:BASE_IMAGE|ALPINE_BASE_IMAGE|J(?:RE|DK)_\\d+_TEMURIN_IMAGE)=(?<depName>[^:\\s]+):(?<currentValue>\\S+)$"
+        "\\b(?:BASE_IMAGE|ALPINE_BASE_IMAGE|J(?:RE|DK)_\\d+_TEMURIN_IMAGE)=(?<depName>[^:\\s]+):(?<currentValue>\\S+)"
       ],
       "datasourceTemplate": "docker"
     }
@@ -49,8 +50,7 @@
         "eclipse-temurin"
       ],
       "matchUpdateTypes": [
-        "major",
-        "minor"
+        "major"
       ],
       "enabled": false
     },
