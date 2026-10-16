@@ -2,5 +2,59 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "baseBranchPatterns": ["main", "/^release\\/.*/"],
+  "enabledManagers": [
+    "custom.regex"
+  ],
+  "groupName": "base image patches",
+  "commitMessageTopic": "base image patches",
+  "labels": [
+    "dependencies"
+  ],
+  "major": {
+    "enabled": false
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Base images (debian, alpine, eclipse-temurin JRE/JDK) defined in .env",
+      "managerFilePatterns": [
+        ".env"
+      ],
+      "matchStrings": [
+        "\\b(?:BASE_IMAGE|ALPINE_BASE_IMAGE|J(?:RE|DK)_\\d+_TEMURIN_IMAGE)=(?<depName>[^:\\s]+):(?<currentValue>\\S+)"
+      ],
+      "datasourceTemplate": "docker"
+    },
+    {
+      "customType": "regex",
+      "description": "Galleon version defined in .env (GitHub releases of wildfly/galleon)",
+      "managerFilePatterns": [
+        ".env"
+      ],
+      "matchStrings": [
+        "\\bGALLEON_VERSION=(?<currentValue>\\S+)"
+      ],
+      "depNameTemplate": "wildfly/galleon",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "maven"
+    }
+  ],
+  "packageRules": [
+    {
+      "description": "Temurin JRE/JDK: versioning of tags like 17.0.20.1_1-jre",
+      "matchDepNames": [
+        "eclipse-temurin"
+      ],
+      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:\\.(?<build>\\d+))?_(?<revision>\\d+)-(?<compatibility>jre|jdk)$"
+    },
+    {
+      "description": "Release branches: PR is created only after manual approval in the Dependency Dashboard",
+      "matchBaseBranches": [
+        "/^release\\/.*/"
+      ],
+      "dependencyDashboardApproval": true
+    }
   ]
 }

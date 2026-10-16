@@ -42,3 +42,22 @@ We basically handle 2 cases:
 
 The corresponding CI appears only on the appropriate branches.
 
+== Dependency updates
+
+Base image versions in `.env` are updated by https://docs.renovatebot.com/[Renovate] (configuration: `renovate.json`). All base image updates are grouped into one PR.
+
+=== Branches
+
+* `main` - PRs are created automatically.
+* `release/*` - PRs are created only after approval on the Dependency Dashboard.
+
+=== Dependency Dashboard
+
+Renovate keeps a single issue called *Dependency Dashboard* up to date. It lists:
+
+* open and pending updates for every processed branch,
+* updates waiting for approval (`release/*` branches),
+* errors and warnings from the last run.
+
+To create a PR on a release branch, tick the checkbox of the update under *Pending Approval*.
+To rerun Renovate immediately, tick the rerun checkbox at the bottom of the issue.
