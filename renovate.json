@@ -5,6 +5,7 @@
   ],
   "timezone": "Europe/Budapest",
   "prHourlyLimit": 0,
+  "baseBranchPatterns": ["main", "/^release\\/.*/"],
   "enabledManagers": [
     "custom.regex"
   ],
