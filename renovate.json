@@ -77,6 +77,13 @@
       "labels": [
         "dependencies"
       ]
+    },
+    {
+      "description": "Release branches: PR is created only after manual approval in the Dependency Dashboard",
+      "matchBaseBranches": [
+        "/^release\\/.*/"
+      ],
+      "dependencyDashboardApproval": true
     }
   ]
 }
