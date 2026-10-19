@@ -60,8 +60,7 @@
         "alpine"
       ],
       "matchUpdateTypes": [
-        "major",
-        "minor"
+        "major"
       ],
       "enabled": false
     },
