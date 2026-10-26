@@ -99,7 +99,8 @@
       "matchUpdateTypes": [
         "patch"
       ],
-      "groupName": "patch updates",
+      "groupName": "dependencies",
+      "groupSlug": "patch-updates",
       "addLabels": [
         "patch"
       ]
@@ -109,7 +110,8 @@
       "matchUpdateTypes": [
         "minor"
       ],
-      "groupName": "minor updates",
+      "groupName": "dependencies",
+      "groupSlug": "minor-updates",
       "dependencyDashboardApproval": true,
       "addLabels": [
         "minor"
